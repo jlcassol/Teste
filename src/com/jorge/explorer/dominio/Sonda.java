@@ -10,6 +10,7 @@ public class Sonda implements SondaInterface{
 	private Integer posicaoX;
 	private Integer posicaoY;
 	private Direcao direcao;
+	private Planeta planeta;
 	
 	public Sonda(Integer posicaoX, Integer posicaoY, Direcao direcao) {
 		this.posicaoX = posicaoX;
@@ -41,6 +42,15 @@ public class Sonda implements SondaInterface{
 		this.direcao = direcao;
 	}
 
+	public Planeta getPlaneta() {
+		return planeta;
+	}
+
+	public void setPlaneta(Planeta planeta) {
+		this.planeta = planeta;
+	}
+
+	
 	@Override
 	public void movimentar(String comandoMovimentacao) {
 		
@@ -63,14 +73,22 @@ public class Sonda implements SondaInterface{
 		}
 	}
 
-	private void locomover() {
-		
-	}
-
+	
+	/**
+	 * Metodo que define qual a direcao a sonda deve se posicionar
+	 * @param direcao --> Direcao em que a sonda esta apontada
+	 * @param sentido --> Sentido em que a sonda deve rotacionar
+	 */
 	private void direcionar(Direcao direcao, String sentido) {
 		this.setDirecao(direcao.direcionar(sentido));
 	}
-
+	
+	
+	private void locomover() {
+		
+	}
+	
+	
 	@Override
 	public String obterPosicaoAtual() {
 		return "Localizacao = X:"+ this.posicaoX + " Y:" + this.posicaoY + " Direcao:" + this.direcao;
