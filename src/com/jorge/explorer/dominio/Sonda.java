@@ -50,24 +50,20 @@ public class Sonda implements SondaInterface{
 			
 			for(int i=0; i<movimentos.length; i++){
 				
-				switch (movimentos[i]) {
-				case 'L' | 'R':
-					direcionar(this.getDirecao(), Character.toString(movimentos[i]));
-					break;
+				//L, R ou M
+				String acao = Character.toString(movimentos[i]);
 				
-				case 'M':
-					movimentar();
-					break;
-					
-				default:
-					System.out.println("Comando descartado por ser invalido:" + movimentos[i]);
-					break;
+				if("L".equals(acao) || "R".equals(acao)){
+					direcionar(this.getDirecao(), acao);
+				}
+				else if("M".equals(acao)){
+					locomover();
 				}
 			}
 		}
 	}
 
-	private void movimentar() {
+	private void locomover() {
 		
 	}
 

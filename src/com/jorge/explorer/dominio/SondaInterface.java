@@ -8,5 +8,6 @@ package com.jorge.explorer.dominio;
 public interface SondaInterface {
 
 	public void movimentar(String comandoMovimentacao);
+	
 	public String obterPosicaoAtual();
 }
