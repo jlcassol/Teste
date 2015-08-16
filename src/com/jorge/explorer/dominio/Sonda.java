@@ -86,8 +86,29 @@ public class Sonda implements SondaInterface{
 	
 	private void locomover() {
 		
+		if(this.getDirecao() == Direcao.N || this.getDirecao() == Direcao.S){
+			
+			this.setPosicaoY(isPossivelMovimentar(this.getPosicaoY(), this.planeta.getAltura()));
+			
+		}else{
+			
+			this.setPosicaoX(isPossivelMovimentar(this.getPosicaoX(), this.planeta.getLargura()));
+			
+		}
+		
 	}
 	
+	
+	private Integer isPossivelMovimentar(Integer sentido, Integer medida) {
+		
+		int posicao = sentido + this.getDirecao().getValor();
+		
+		if(posicao >= 0 || posicao < medida){
+			return posicao;
+		}
+		
+		return sentido;
+	}
 	
 	@Override
 	public String obterPosicaoAtual() {

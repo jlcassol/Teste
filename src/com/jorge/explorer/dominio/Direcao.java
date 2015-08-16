@@ -7,33 +7,34 @@ package com.jorge.explorer.dominio;
  */
 public enum Direcao {
 
-	N {
+	N(1) {
 		@Override 
 		public Direcao direcionarPara(String sentidoRotacao) {
 			return(sentidoRotacao.equalsIgnoreCase("L") ? Direcao.W : Direcao.E);
 		}
 	},
 
-	E {
+	E(1) {
 		@Override 
 		public Direcao direcionarPara(String sentidoRotacao) {
 			return(sentidoRotacao.equalsIgnoreCase("L") ? Direcao.N : Direcao.S);
 		}
 	},
 
-	S {
+	S(-1) {
 		@Override 
 		public Direcao direcionarPara(String sentidoRotacao) {
 			return(sentidoRotacao.equalsIgnoreCase("L") ? Direcao.E : Direcao.W);
 		}
 	},
 
-	W {
+	W(-1) {
 		@Override 
 		public Direcao direcionarPara(String sentidoRotacao) {
 			return(sentidoRotacao.equalsIgnoreCase("L") ? Direcao.S : Direcao.N);
 		}
 	};
+	
 	
 	public final Direcao direcionar(String sentido) {  
         return direcionarPara(sentido);  
@@ -41,8 +42,17 @@ public enum Direcao {
 	
 	public abstract Direcao direcionarPara(String sentido);
 	
-	@Override 
-	public Direcao direcionarPara(String sentidoRotacao) {
-		return(sentidoRotacao.equalsIgnoreCase("L") ? Direcao.W : Direcao.E);
+	
+	private final Integer valor; 
+	
+	
+	private Direcao(Integer valorOpcao) {
+		valor = valorOpcao;
+	} 
+	
+	
+	public Integer getValor(){ 
+		return valor; 
 	}
+
 }

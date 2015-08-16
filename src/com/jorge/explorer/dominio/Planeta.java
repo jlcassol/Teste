@@ -10,19 +10,21 @@ import java.util.List;
 public class Planeta {
 
 	//area do planeta a ser explorado
-	private Integer[][] areaPlaneta; 
+	private Integer altura; 
+	private Integer largura;
 	private List<Sonda> sondas;
 
 	public Planeta(Integer altura, Integer largura) {
-		areaPlaneta = new Integer[altura][largura];
-	}
-	
-	public Integer[][] getAreaPlaneta() {
-		return areaPlaneta;
+		this.altura = altura;
+		this.largura = largura;
 	}
 
-	public void setAreaPlaneta(Integer[][] areaPlaneta) {
-		this.areaPlaneta = areaPlaneta;
+	public Integer getAltura() {
+		return altura;
+	}
+
+	public Integer getLargura() {
+		return largura;
 	}
 
 	public List<Sonda> getSondas() {
