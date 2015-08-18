@@ -40,8 +40,8 @@ public class ExplorarApp {
 			System.out.println("Movimentos a realizar: ");
 			String movimentos = scanner.next();
 
-			Sonda sonda = new Sonda(posicaoX, posicaoY, Direcao.getBySigla(direcao));
-			sonda.movimentar(movimentos, planeta);
+			Sonda sonda = new Sonda(posicaoX, posicaoY, Direcao.getBySigla(direcao), movimentos);
+			sonda.movimentar(planeta);
 			
 			System.out.println(sonda.obterPosicaoAtual());
 			

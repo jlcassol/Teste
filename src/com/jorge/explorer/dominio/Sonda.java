@@ -1,5 +1,9 @@
 package com.jorge.explorer.dominio;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.jorge.explorer.enums.Comando;
 import com.jorge.explorer.enums.Direcao;
 
@@ -8,16 +12,23 @@ import com.jorge.explorer.enums.Direcao;
  * @author Jorge Cassol
  *
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Sonda implements SondaInterface{
 
 	private Integer posicaoX;
 	private Integer posicaoY;
 	private Direcao direcao;
+	private String movimento;
 	
-	public Sonda(Integer posicaoX, Integer posicaoY, Direcao direcao) {
+	public Sonda() {
+	}
+
+	public Sonda(Integer posicaoX, Integer posicaoY, Direcao direcao, String movimento) {
 		this.posicaoX = posicaoX;
 		this.posicaoY = posicaoY;
 		this.direcao = direcao;
+		this.movimento = movimento;
 	}
 
 	public Integer getPosicaoX() {
@@ -44,13 +55,20 @@ public class Sonda implements SondaInterface{
 		this.direcao = direcao;
 	}
 
-	
+	public String getMovimento() {
+		return movimento;
+	}
+
+	public void setMovimento(String movimento) {
+		this.movimento = movimento;
+	}
+
 	@Override
-	public void movimentar(String comandoMovimentacao, Planeta planeta) {
+	public void movimentar(Planeta planeta) {
 		
-		if(comandoMovimentacao != null){
+		if(this.getMovimento() != null){
 		
-		    char[] movimentos = comandoMovimentacao.toUpperCase().toCharArray(); 
+		    char[] movimentos = this.getMovimento().toUpperCase().toCharArray(); 
 			
 			for(int i=0; i<movimentos.length; i++){
 				
@@ -115,7 +133,7 @@ public class Sonda implements SondaInterface{
 	
 	@Override
 	public String obterPosicaoAtual() {
-		return "Localizacao = X:"+ this.posicaoX + " Y:" + this.posicaoY + " Direcao:" + this.direcao;
+		return "Localizacao = X:"+ this.getPosicaoX() + " Y:" + this.getPosicaoY() + " Direcao:" + this.getDirecao();
 	}
 	
 }

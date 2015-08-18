@@ -12,11 +12,9 @@ public class SondaTest extends TestCase{
 
 	public void testPropostoNoExercicio1(){
 		
-		Sonda sonda1 = new Sonda(1, 2, Direcao.N);
+		Sonda sonda1 = new Sonda(1, 2, Direcao.N, "LMLMLMLMM");
 		
-		String comandoTest = "LMLMLMLMM";
-		
-		sonda1.movimentar(comandoTest, planeta);
+		sonda1.movimentar(planeta);
 		
 		assertEquals(1, sonda1.getPosicaoX().intValue());
 		assertEquals(3, sonda1.getPosicaoY().intValue());
@@ -25,10 +23,9 @@ public class SondaTest extends TestCase{
 	
 	public void testPropostoNoExercicio2(){
 		
-		Sonda sonda1 = new Sonda(3, 3, Direcao.E);
-		String comandoTest = "MMRMMRMRRM";
+		Sonda sonda1 = new Sonda(3, 3, Direcao.E, "MMRMMRMRRM");
 		
-		sonda1.movimentar(comandoTest, planeta);
+		sonda1.movimentar(planeta);
 		
 		assertEquals(5, sonda1.getPosicaoX().intValue());
 		assertEquals(1, sonda1.getPosicaoY().intValue());
@@ -37,10 +34,9 @@ public class SondaTest extends TestCase{
 	
 	public void testSondaImpossibilitadaDeMover(){
 		
-		Sonda sonda1 = new Sonda(0, 0, Direcao.S);
-		String comandoTest = "MMLMM";
+		Sonda sonda1 = new Sonda(0, 0, Direcao.S, "MMLMM");
 		
-		sonda1.movimentar(comandoTest, planeta);
+		sonda1.movimentar(planeta);
 		
 		assertEquals(2, sonda1.getPosicaoX().intValue());
 		assertEquals(0, sonda1.getPosicaoY().intValue());
@@ -49,10 +45,9 @@ public class SondaTest extends TestCase{
 	
 	public void testSondaImpossibilitadaDeMoverDuasVezes(){
 		
-		Sonda sonda1 = new Sonda(0, 0, Direcao.S);
-		String comandoTest = "MMRMMRMM";
+		Sonda sonda1 = new Sonda(0, 0, Direcao.S, "MMRMMRMM");
 		
-		sonda1.movimentar(comandoTest, planeta);
+		sonda1.movimentar(planeta);
 		
 		assertEquals(0, sonda1.getPosicaoX().intValue());
 		assertEquals(2, sonda1.getPosicaoY().intValue());
