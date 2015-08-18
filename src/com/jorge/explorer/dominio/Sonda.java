@@ -106,7 +106,7 @@ public class Sonda implements SondaInterface{
 		
 		int novaPosicao = posicaoAnterior + this.getDirecao().getValor();
 		
-		if(novaPosicao >= 0 || novaPosicao < tamanhoEixoPlaneta){
+		if(novaPosicao >= 0 && novaPosicao <= tamanhoEixoPlaneta){
 			return novaPosicao;
 		}
 		

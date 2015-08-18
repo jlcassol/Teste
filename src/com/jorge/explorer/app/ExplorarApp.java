@@ -6,6 +6,11 @@ import com.jorge.explorer.dominio.Planeta;
 import com.jorge.explorer.dominio.Sonda;
 import com.jorge.explorer.enums.Direcao;
 
+/**
+ * Classe responsavel por executar o sistema explorador de marte
+ * @author JorgeLuís
+ *
+ */
 public class ExplorarApp {
 
 	public static void main(String[] args) {

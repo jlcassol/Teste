@@ -1,5 +1,10 @@
 package com.jorge.explorer.enums;
 
+/**
+ * Enum responsavel por simplificar tipos de comandos
+ * @author Jorge Cassol
+ *
+ */
 public enum Comando {
 
 	ESQUERDA("L"), DIREITA("R"), MOVIMENTAR("M");
