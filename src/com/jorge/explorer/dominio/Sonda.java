@@ -1,5 +1,8 @@
 package com.jorge.explorer.dominio;
 
+import com.jorge.explorer.enums.Comando;
+import com.jorge.explorer.enums.Direcao;
+
 /**
  * Classe responsável por criar o modelo de Sondas
  * @author Jorge Cassol
@@ -10,7 +13,6 @@ public class Sonda implements SondaInterface{
 	private Integer posicaoX;
 	private Integer posicaoY;
 	private Direcao direcao;
-	private Planeta planeta;
 	
 	public Sonda(Integer posicaoX, Integer posicaoY, Direcao direcao) {
 		this.posicaoX = posicaoX;
@@ -42,17 +44,9 @@ public class Sonda implements SondaInterface{
 		this.direcao = direcao;
 	}
 
-	public Planeta getPlaneta() {
-		return planeta;
-	}
-
-	public void setPlaneta(Planeta planeta) {
-		this.planeta = planeta;
-	}
-
 	
 	@Override
-	public void movimentar(String comandoMovimentacao) {
+	public void movimentar(String comandoMovimentacao, Planeta planeta) {
 		
 		if(comandoMovimentacao != null){
 		
@@ -63,11 +57,11 @@ public class Sonda implements SondaInterface{
 				//L, R ou M
 				String acao = Character.toString(movimentos[i]);
 				
-				if("L".equals(acao) || "R".equals(acao)){
+				if(Comando.ESQUERDA.toString().equals(acao) || Comando.DIREITA.toString().equals(acao)){
 					direcionar(this.getDirecao(), acao);
 				}
-				else if("M".equals(acao)){
-					locomover();
+				else if(Comando.MOVIMENTAR.toString().equals(acao)){
+					locomover(planeta);
 				}
 			}
 		}
@@ -84,30 +78,39 @@ public class Sonda implements SondaInterface{
 	}
 	
 	
-	private void locomover() {
+	/**
+	 * Metodo que verifica para qual direcao a sonda se movera
+	 * @param planeta --> planeta que a sonda esta explorando
+	 */
+	private void locomover(Planeta planeta) {
 		
+		//caso a direcao da sonda seja norte ou sul, realiza a movimentacao no eixo Y
 		if(this.getDirecao() == Direcao.N || this.getDirecao() == Direcao.S){
-			
-			this.setPosicaoY(isPossivelMovimentar(this.getPosicaoY(), this.planeta.getAltura()));
-			
-		}else{
-			
-			this.setPosicaoX(isPossivelMovimentar(this.getPosicaoX(), this.planeta.getLargura()));
-			
+			this.setPosicaoY(realizarMovimento(this.getPosicaoY(), planeta.getAltura()));
 		}
-		
+		//senao se movimenta no eixo x
+		else{
+			this.setPosicaoX(realizarMovimento(this.getPosicaoX(), planeta.getLargura()));
+		}
 	}
 	
 	
-	private Integer isPossivelMovimentar(Integer sentido, Integer medida) {
+	/**
+	 * Metodo que realiza o movimento da sonda, onde se nao for possivel realizar o movimento, 
+	 * aguarda o proximo comando ate a sonda poder se movimentar.
+	 * @param posicaoAnterior --> posicao anterior da sonda
+	 * @param tamanhoEixoPlaneta --> tamanho do eixo do planeta em que a sonda pode explorar
+	 * @return posicao calculada da sonda
+	 */
+	private Integer realizarMovimento(Integer posicaoAnterior, Integer tamanhoEixoPlaneta) {
 		
-		int posicao = sentido + this.getDirecao().getValor();
+		int novaPosicao = posicaoAnterior + this.getDirecao().getValor();
 		
-		if(posicao >= 0 || posicao < medida){
-			return posicao;
+		if(novaPosicao >= 0 || novaPosicao < tamanhoEixoPlaneta){
+			return novaPosicao;
 		}
 		
-		return sentido;
+		return posicaoAnterior;
 	}
 	
 	@Override

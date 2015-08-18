@@ -9,9 +9,10 @@ public interface SondaInterface {
 
 	/**
 	 * Metodo para realizar a movimentacao das sondas
-	 * @param comandoMovimentacao
+	 * @param comandoMovimentacao --> Comando que a sonda executara
+	 * @param planeta --> Planeta em que a sonda vai explorar
 	 */
-	public void movimentar(String comandoMovimentacao);
+	public void movimentar(String comandoMovimentacao, Planeta planeta);
 	
 	/**
 	 * Metodo para verificar posicao das sondas

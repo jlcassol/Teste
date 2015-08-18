@@ -1,4 +1,4 @@
-package com.jorge.explorer.dominio;
+package com.jorge.explorer.enums;
 
 /**
  * Enum referente a 'Rosa dos Ventos'
@@ -10,28 +10,28 @@ public enum Direcao {
 	N(1) {
 		@Override 
 		public Direcao direcionarPara(String sentidoRotacao) {
-			return(sentidoRotacao.equalsIgnoreCase("L") ? Direcao.W : Direcao.E);
+			return(Comando.ESQUERDA.toString().equals(sentidoRotacao) ? Direcao.W : Direcao.E);
 		}
 	},
 
 	E(1) {
 		@Override 
 		public Direcao direcionarPara(String sentidoRotacao) {
-			return(sentidoRotacao.equalsIgnoreCase("L") ? Direcao.N : Direcao.S);
+			return(Comando.ESQUERDA.toString().equals(sentidoRotacao) ? Direcao.N : Direcao.S);
 		}
 	},
 
 	S(-1) {
 		@Override 
 		public Direcao direcionarPara(String sentidoRotacao) {
-			return(sentidoRotacao.equalsIgnoreCase("L") ? Direcao.E : Direcao.W);
+			return(Comando.ESQUERDA.toString().equals(sentidoRotacao) ? Direcao.E : Direcao.W);
 		}
 	},
 
 	W(-1) {
 		@Override 
 		public Direcao direcionarPara(String sentidoRotacao) {
-			return(sentidoRotacao.equalsIgnoreCase("L") ? Direcao.S : Direcao.N);
+			return(Comando.ESQUERDA.toString().equals(sentidoRotacao) ? Direcao.S : Direcao.N);
 		}
 	};
 	
