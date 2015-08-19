@@ -19,21 +19,20 @@ import com.jorge.explorer.enums.Direcao;
 public class ExplorerResource {
 
 	@POST
-	@Consumes({MediaType.TEXT_XML})
-	@Produces({MediaType.TEXT_PLAIN})
-	public void criarExploracao(Exploracao exploracao){
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<Sonda> criarExploracao(Exploracao exploracao){
 		
 		Planeta planeta = exploracao.getPlaneta();
 		for(Sonda sonda : exploracao.getSondas()){
 			sonda.movimentar(planeta);
 			System.out.println(sonda.obterPosicaoAtual());
 		}
-		
+		return exploracao.getSondas();
 	}
 	
-	//Teste de xml
 	@GET
-	@Produces({MediaType.TEXT_XML})
+	@Produces({MediaType.APPLICATION_JSON})
 	public Exploracao obterExploracao(){
 		
 		Exploracao exploracao = new Exploracao();

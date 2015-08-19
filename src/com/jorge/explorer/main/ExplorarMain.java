@@ -1,4 +1,4 @@
-package com.jorge.explorer.app;
+package com.jorge.explorer.main;
 
 import java.util.Scanner;
 
@@ -8,10 +8,10 @@ import com.jorge.explorer.enums.Direcao;
 
 /**
  * Classe responsavel por executar o sistema explorador de marte
- * @author JorgeLuís
+ * @author Jorge Cassol
  *
  */
-public class ExplorarApp {
+public class ExplorarMain {
 
 	public static void main(String[] args) {
 
